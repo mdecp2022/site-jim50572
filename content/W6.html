@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW.html'>HW</a><ul class='dropdown'><li><a href='W5.html'>W5</a><li><a href='W6.html'>W6</a><li><a href='w11.html'>w11</a><li><a href='W13.html'>W13</a><li class='has-children'><a href='W14.html'>W14</a><ul class='dropdown'><li><a href='物件導向設計的學員名單與成績擷取.html'>物件導向設計的學員名單與成績擷取</a></li></li></ul></ul><li><a href='心得.html'>心得</a><li><a href='cp2022.html'>cp2022</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW.html'>HW</a><ul class='dropdown'><li><a href='W5.html'>W5</a><li><a href='W6.html'>W6</a><li class='has-children'><a href='w10.html'>w10</a><ul class='dropdown'><li><a href='作業程式.html'>作業程式</a></li></ul><li><a href='w11.html'>w11</a><li><a href='W13.html'>W13</a><li class='has-children'><a href='W14.html'>W14</a><ul class='dropdown'><li><a href='物件導向設計的學員名單與成績擷取.html'>物件導向設計的學員名單與成績擷取</a></li></li></ul></ul><li><a href='心得.html'>心得</a><li><a href='cp2022.html'>cp2022</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,7 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W5 << <a href='W5.html'>Previous</a> <a href='w11.html'>Next</a> >> w11<br /><h1>W6</h1>
+    <div id="tipue_search_content">W5 << <a href='W5.html'>Previous</a> <a href='w10.html'>Next</a> >> w10<br /><h1>W6</h1>
 <p><a href="./../downloads/w12demo.txt"></a></p>
 <!-- 導入 brython 程式庫 -->
 <script src="./../cmsimde/static/brython.js"></script>
@@ -184,7 +184,6 @@ function doSave(storage_id, filename){
 <p></p>
 <p><!-- ######################  editor1 開始 ###################### --></p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <p><!-- 存擋表單開始 --></p>
 <form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
@@ -198,77 +197,7 @@ function doSave(storage_id, filename){
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
 <p><!-- 這裡的畫布 id 為 brython_div --></p>
-<div id="brython_div"></div>
-<p><!-- ######################  editor1 結束 ###################### --></p>
-<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd1(ev):
-    # 注意這裡清除的畫布 id 為 brython_div
-    bd = doc["brython_div"]
-    bd.clear()
-Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run1():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src"]
-    except:
-        url = "https://gist.githubusercontent.com/jim50572/1885aa44012f1f26cb17c9c09a0b8bca/raw/9d51b60d5c04aefb82a3383328b0fac720dbeeb0/gistfile1.txt"
-    prog = open(url).read()
-
-    # 將程式載入編輯區
-    Ace1.editor.setValue(prog)
-    Ace1.editor.scrollToRow(0)
-    Ace1.editor.gotoLine(0)
-    # 直接執行程式
-    #ns = {'__name__':'__main__'}
-    #exec(prog, ns)
-    # 按下 run 按鈕
-    Ace1.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run1'].bind('click', Ace1.run)
-doc['kw_show_console1'].bind('click', Ace1.show_console)
-doc['kw_clear_console1'].bind('click', Ace1.clear_console)
-doc['clear_bd1'].bind('click', clear_bd1)
-# 呼叫函式執行
-run1()
-</script>
-<!-- 以上為內建程式, 頁面可透過 ?src=gist_url 執行 --></p>
-<p><!-- add 1 to 100 開始 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd1(ev):
-    bd = doc["brython_div1"]
-    bd.clear()
-
-# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
-Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-
-class button2:
-    def __init__(self, url):
-        self.url = url
-
-    # 記得加入 event 輸入變數
-    def do(self,ev):
-        Ace2.editor.setValue(open(self.url).read())
-        Ace2.editor.scrollToRow(0)
-        Ace2.editor.gotoLine(0)
-        Ace2.run()
-
-w10_url = "https://gist.githubusercontent.com/RWE1116/6490f6e5279abccff97b44b487808628/raw/68f2ea133429d3db109a36e760bd258a1c1eadeb/w10test.py"
-w10 = button2(w10_url)
-doc["w10"].bind('click', w10.do)
-</script>
-</p>
-<br />W5 << <a href='W5.html'>Previous</a> <a href='w11.html'>Next</a> >> w11</div>
+<br />W5 << <a href='W5.html'>Previous</a> <a href='w10.html'>Next</a> >> w10</div>
         
     <!-- footer -->
       <div class="container">
