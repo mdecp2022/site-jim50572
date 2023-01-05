@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='成績.html'>成績</a><ul class='dropdown'><li><a href='w10.html'>w10</a></li></ul><li class='has-children'><a href='HW.html'>HW</a><ul class='dropdown'><li><a href='W5.html'>W5</a><li><a href='W6.html'>W6</a><li class='has-children'><a href='W10.html'>W10</a><ul class='dropdown'><li><a href='作業程式.html'>作業程式</a></li></ul><li><a href='W11.html'>W11</a><li><a href='W13.html'>W13</a><li class='has-children'><a href='W14.html'>W14</a><ul class='dropdown'><li><a href='物件導向設計的學員名單與成績擷取.html'>物件導向設計的學員名單與成績擷取</a></li></ul><li><a href='W15.html'>W15</a><li class='has-children'><a href='w17.html'>w17</a><ul class='dropdown'><li><a href='canvas.html'>canvas</a><li><a href='canvas circle.html'>canvas circle</a></li></li></ul></ul><li><a href='心得.html'>心得</a><li><a href='cp2022-1.html'>cp2022-1</a><li><a href='cp2022.html'>cp2022</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='成績.html'>成績</a><ul class='dropdown'><li><a href='w10.html'>w10</a></li></ul><li class='has-children'><a href='HW.html'>HW</a><ul class='dropdown'><li><a href='W5.html'>W5</a><li><a href='W6.html'>W6</a><li class='has-children'><a href='W10.html'>W10</a><ul class='dropdown'><li><a href='作業程式.html'>作業程式</a></li></ul><li><a href='W11.html'>W11</a><li><a href='W13.html'>W13</a><li class='has-children'><a href='W14.html'>W14</a><ul class='dropdown'><li><a href='物件導向設計的學員名單與成績擷取.html'>物件導向設計的學員名單與成績擷取</a></li></ul><li><a href='W15.html'>W15</a><li class='has-children'><a href='w17.html'>w17</a><ul class='dropdown'><li><a href='canvas.html'>canvas</a></li></li></ul></ul><li><a href='心得.html'>心得</a><li><a href='cp2022-1.html'>cp2022-1</a><li><a href='cp2022.html'>cp2022</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,8 +141,20 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w17 << <a href='w17.html'>Previous</a> <a href='canvas circle.html'>Next</a> >> canvas circle<br /><h1>canvas</h1>
+    <div id="tipue_search_content">w17 << <a href='w17.html'>Previous</a> <a href='心得.html'>Next</a> >> 心得<br /><h1>canvas</h1>
 <p></p>
+<!-- 納入 Brython 環境 -->
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<!-- 給定 brython_div1 division 標註 --></p>
+<div id="brython_div1"></div>
 <!-- 納入 Brython 環境 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
@@ -176,7 +188,8 @@ canvas.id = "canvas"
 brython_div = doc["brython_div1"]
 
 # 建立 buttons
-#brython_div <= html.BR()
+brython_div <= html.BUTTON("啟動", id="power")
+brython_div <= html.BR()
 
 # 將 canvas 標註放入 brython_div1 所在位置
 # 頁面中原本就已經放入 <div id="brython_div"></div> 標註
@@ -337,17 +350,12 @@ origx = 1
 origy = 1
 # 利用 grid 函式畫出格線
 #grid(origx, origy, w, h, wnum, hnum, pixel=1, color="black")
-#draw_line(0, 0, 600, 600, color="#000000")
-
-import math
-ctx.beginPath();
-ctx.arc(100, 75, 50, 0, 2 * math.pi);
-ctx.stroke();
-
+draw_line(0, 0, 600, 600, color="pink")
 
 doc["power"].bind("click", launchAnimation)
 #browser.timer.set_interval(game, 100)
-</script><br />w17 << <a href='w17.html'>Previous</a> <a href='canvas circle.html'>Next</a> >> canvas circle</div>
+</script>
+<br />w17 << <a href='w17.html'>Previous</a> <a href='心得.html'>Next</a> >> 心得</div>
         
     <!-- footer -->
       <div class="container">
